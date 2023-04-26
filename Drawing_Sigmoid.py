@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 def sigmoid(x):
-    return 1.0 / (1.0 + np.exp(-x))
+    return 1.0 / (1.0 +   np.exp(-x))
 
 if __name__ == '__main__':
     values = np.arange(-10, 10, 0.1) # = [-10, -9.9 , ... 9.9] like list we don't count last number 10
