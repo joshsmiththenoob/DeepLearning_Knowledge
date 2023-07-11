@@ -33,8 +33,8 @@ n_inputs = X_data.shape[1]
 
 # 2. Standarization or Normalization 標準化(Z-Score) or 歸一化(Min-Max Normalization)
 MNScaler = MinMaxScaler()
-MNScaler.fit_transform(X_train) # 先學習train的歸一化特徵(Min,Max)，再對train進行歸一化
-MNScaler.transform(X_test) # 因為已經學習train的歸一化特徵，所以用同樣(模型)的標準對test歸一化
+X_train = MNScaler.fit_transform(X_train) # 先學習train的歸一化特徵(Min,Max)，再對train進行歸一化
+X_test = MNScaler.transform(X_test) # 因為已經學習train的歸一化特徵，所以用同樣(模型)的標準對test歸一化
 
 
 # Part II . Define AutoEncoder
