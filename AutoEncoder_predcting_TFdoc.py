@@ -63,7 +63,7 @@ def get_model():
 model_path = 'Autencoder_training_1/ckpt.h5'
 autoencoder = load_model(model_path)
 # 4. 使用AutoEncoder 的 Encoder 以及 Decoder
-decoded_imgs = np.array(autoencoder.predict(X_test))
+decoded_imgs = np.array(autoencoder.predict(x_test))
 
 # 5. 畫圖顯示
 n = 10
