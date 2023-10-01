@@ -19,9 +19,10 @@ def get_model(latent_dim):
     e = layers.Flatten()(input)
     e = layers.Dense(latent_dim, activation = 'relu',name = 'bottle_neck')(e)
     # Decoder
-    d = layers.Dense(784, activation = 'linear')(e)
+    d = layers.Dense(784, activation = 'sigmoid')(e)  # sigmoid使用時機:訓練、測試(未知)數據鐵定能壓到0~1之間的情況下 : ex: 圖片最高像素值也只有255，所以一定可以壓到0~1
+    # 但Sigmoid主要用來做二分類任務，linear通常做回歸任務
     output = layers.Reshape((28,28))(d)
-    autoencoder_model = Model(inputs = [input], outputs = output)
+    autoencoder_model = Model(inputs = input, outputs = output)
     return autoencoder_model
 
 
@@ -73,7 +74,7 @@ plt.show()
 
 
 # 4. 使用AutoEncoder 的 Encoder 以及 Decoder
-decoded_imgs = np.array(autoencoder.predict(X_test))
+decoded_imgs = np.array(autoencoder.predict(x_test))
 
 
 # 5. 畫圖顯示
